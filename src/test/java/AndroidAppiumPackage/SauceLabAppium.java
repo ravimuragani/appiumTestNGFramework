@@ -96,6 +96,7 @@ public class SauceLabAppium extends Base {
 		try {
 		pom.loginusername.sendKeys("standard_user");
 		pom.loginpassword.sendKeys("secret_sauce");
+//login
 		pom.logInSubmit.click();
 		addItemToCart("Shirt",
 				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Shirt\").instance(0))");
