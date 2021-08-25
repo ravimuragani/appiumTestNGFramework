@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]">
+  <parameter name="cloudFlag" value="true"/>
   <listeners>
     <listener class-name="resources.ExtentReporterNG"/>
   </listeners>
@@ -8,7 +9,9 @@
     <classes>
       <class name="AndroidAppiumPackage.SauceLabAppium">
         <methods>
-          <include name="purchase_chkout_validations"/>
+          <include name="purchaseFlow" invocation-numbers="0"/>
+          <include name="purchase_with_No_Item" invocation-numbers="0"/>
+          <include name="purchase_chkout_validations" invocation-numbers="0"/>
         </methods>
       </class> <!-- AndroidAppiumPackage.SauceLabAppium -->
     </classes>

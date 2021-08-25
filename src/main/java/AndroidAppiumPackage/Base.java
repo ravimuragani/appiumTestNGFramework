@@ -1,8 +1,12 @@
 package AndroidAppiumPackage;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -19,19 +23,23 @@ public class Base {
 
 	public static AndroidDriver<AndroidElement> driver;
 
-	public static AndroidDriver<AndroidElement> intializationTest(Boolean flag) throws MalformedURLException {
+	public static AndroidDriver<AndroidElement> intializationTest(Boolean flag) throws IOException {
 		// TODO Auto-generated method stub
 		DesiredCapabilities dc = new DesiredCapabilities();
+		FileInputStream fis = new FileInputStream(
+				System.getProperty("user.dir") + "\\global.properties");
+		Properties prop = new Properties();
+		prop.load(fis);
 		if (!flag) {
-
-		File f = new File("src");// first moving to main folder
+			
+		File f = new File(System.getProperty("user.dir"));// first moving to main folder
 		File fl = new File(f, "Android.SauceLabs.apk");// then mention file to open
-		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "emulatorPixel");// open emulator
+		dc.setCapability(MobileCapabilityType.DEVICE_NAME,  prop.get("localdevice"));// invoke emulator
 		dc.setCapability(MobileCapabilityType.APP, fl.getAbsolutePath());// invoke app using absolutepath
-		dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+		dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, prop.get("AUTOMATION_NAME"));
 		dc.setCapability(MobileCapabilityType.NO_RESET, true);
-		dc.setCapability("appActivity", "com.swaglabsmobileapp.MainActivity");
-		dc.setCapability("appPackage", "com.swaglabsmobileapp");
+		dc.setCapability("appActivity", prop.get("sauceLabAppappPackage"));
+		dc.setCapability("appPackage", prop.get("sauceLabAppappActivity"));
 		// connection details and capabilities
 		driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -39,18 +47,18 @@ public class Base {
 		}
 		else {
 			
-			dc.setCapability("browserstack.user", "??");
-			dc.setCapability("browserstack.key", "??");
+			dc.setCapability("browserstack.user", prop.get("cloudUser"));
+			dc.setCapability("browserstack.key", prop.get("cloudKey"));
 
 			// Set URL of the application under test
-			dc.setCapability(MobileCapabilityType.APP, "bs://83edf470a2a09cd7e0552d008b975049c2451a85");
+			dc.setCapability(MobileCapabilityType.APP, prop.get("sauceLabAppAppUrl"));
 
 			// Specify device and os_version for testing
-			dc.setCapability("device", "Google Pixel 3");
-			dc.setCapability("os_version", "9.0");
+			dc.setCapability("device", prop.get("cloudDevice"));
+			dc.setCapability("os_version", prop.get("cloudOSversion"));
 
 			//driver = new AndroidDriver<>(new URL("http://hub.browserstack.com/wd/hubs"), dc);
-			 AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(
+			 driver = new AndroidDriver<AndroidElement>(
 			            new URL("http://hub.browserstack.com/wd/hub"), dc);
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			
@@ -81,7 +89,7 @@ public class Base {
 
 			}
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			System.out.println("Searching Element not found");
+			System.err.println("Searching Element not found"+e);
 		}
 
 	}
@@ -111,7 +119,7 @@ public class Base {
 
 			}
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			System.out.println("Searching Element not found");
+			System.err.println("Searching Element not found"+e);
 		}
 
 	}
@@ -141,7 +149,7 @@ public class Base {
 
 			}
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			System.out.println("Searching Element not found");
+			System.err.println("Searching Element not found"+e);
 		}
 
 	}
@@ -170,7 +178,7 @@ public class Base {
 
 			}
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			System.out.println("Searching Element not found");
+			System.err.println("Searching Element not found"+e);
 		}
 
 	}

@@ -58,8 +58,8 @@ public class PomSauceLab {
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-REMOVE']")
 	public List<WebElement> rmvFrmCart;
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CHECKOUT']")
-	public WebElement chkOut;
+	//@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CHECKOUT']")
+	//public WebElement chkOut;
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='First Name']")
 	public WebElement addrsFrstNme;
@@ -70,7 +70,7 @@ public class PomSauceLab {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Zip/Postal Code']")
 	public WebElement addrsZip;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='CONTINUE']")
+	@AndroidFindBy(accessibility = "test-CONTINUE")
 	public WebElement btnContinue;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-FINISH']")
@@ -89,5 +89,8 @@ public class PomSauceLab {
 	public WebElement errMsgChkOut;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='CHECKOUT: OVERVIEW']")
 	public WebElement elmentChck;
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CHECKOUT']")
+	public WebElement btnChkOut;
 
 }

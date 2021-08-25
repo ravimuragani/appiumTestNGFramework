@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 30.805 s <<< FAILURE! - in TestSuite
-purchase_chkout_validations(AndroidAppiumPackage.SauceLabAppium)  Time elapsed: 30.002 s  <<< FAILURE!
-org.openqa.selenium.WebDriverException: 
-java.lang.NullPointerException
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-2ONA81G', ip: '192.168.1.18', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_301'
-Driver info: driver.version: unknown
-	at AndroidAppiumPackage.SauceLabAppium.purchase_chkout_validations(SauceLabAppium.java:99)
-Caused by: java.lang.NullPointerException
-	at AndroidAppiumPackage.SauceLabAppium.purchase_chkout_validations(SauceLabAppium.java:99)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 193.912 s - in TestSuite
