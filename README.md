@@ -1,6 +1,12 @@
 # appiumTestNGFramework
 Appium app TestNG framework for Sauce Lab App
 
+Scenarios Covered:
+1.E2E Purchase flow
+2.Add and remove products
+3.Validations on pages
+
+
 follow steps to execute project
 
 download project from Git
